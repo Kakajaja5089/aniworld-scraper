@@ -12,7 +12,7 @@ async function scrapeAniWorld() {
     });
 
     const $ = cheerio.load(data);
-    const animeList: any[] = [];
+    const animeList = [];
 
     $(".seriesList .serie").each((_, element) => {
       const title = $(element).find(".title").text().trim();
@@ -29,7 +29,7 @@ async function scrapeAniWorld() {
   }
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req, res) {
   const data = await scrapeAniWorld();
   return res.json(data);
 }
